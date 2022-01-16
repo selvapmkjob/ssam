@@ -1,0 +1,182 @@
+<template>
+    <template if:false={isThankYouPage}>
+        <div class="logo slds-m-bottom_small">
+            <div> <img src={deloitteBrandLogo} width="180px" height="50px">
+            </div>
+        </div>
+        <div class="BA_Initiation">
+            <div class="slds-m-bottom_small">
+                <div class="form_header">
+                    <h3 class="slds-text-align_center">{currentFormTitle}</h3>
+                </div>
+            </div>
+            
+    
+        </div>
+    
+        <div class="slds-container_large slds-p-top_medium">
+    
+            <lightning-record-edit-form object-api-name={objectApiName} density="comfy"
+             onsuccess={handleSuccess} onerror={handleError} onload={formLoaded}>
+             <lightning-messages> </lightning-messages>
+    
+                <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_medium slds-grid_vertical-align-end">
+                    <!--1st row start -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <label class="slds-form-element__label">
+                            <abbr title="required" class="slds-required">*</abbr>
+                            Assignee Name
+                        </label>                    
+                        <lightning-input-field  field-name="Assignee_Name__c"
+                                                value={record.Assignee_Name__c}
+                                                variant="label-hidden"
+                                                class="validateMe"
+                                                onchange={handleAssigCntInfo}
+                                                required>                                            
+                        </lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <label class="slds-form-element__label">                        
+                            Assignee Email
+                        </label>                    
+                        <lightning-input-field  field-name="Deloitte_Email_Address__c"
+                                                value={record.Deloitte_Email_Address__c}
+                                                variant="label-hidden"
+                                                disabled>                                            
+                        </lightning-input-field>                
+                    </div>
+                    <!--1st row end -->
+                    <!--2nd row start -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <label class="slds-form-element__label">
+                            Job Level
+                        </label>                    
+                        <lightning-input-field  field-name="USI_Job_Title__c"
+                                                value={record.USI_Job_Title__c}
+                                                variant="label-hidden"
+                                                disabled>                                            
+                        </lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <label class="slds-form-element__label">
+                            Business
+                        </label>                    
+                        <lightning-input-field  field-name="Business__c"
+                                                value={record.Business__c}
+                                               variant="label-hidden"
+                                               disabled>                                            
+                        </lightning-input-field>                
+                    </div>                
+                    <!--2nd row end -->
+                    <!--3rd row start -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <label class="slds-form-element__label">
+                            <abbr title="required" class="slds-required">*</abbr>
+                            Intended Country of Travel
+                        </label>                    
+                        <lightning-input-field  field-name="MF_Country__c"
+                                                class="validateMe"
+                                                variant="label-hidden"
+                                                required>                                            
+                        </lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <label class="slds-form-element__label">
+                            <abbr title="required" class="slds-required">*</abbr>
+                            GM EE Name
+                        </label>                    
+                        <lightning-input-field  field-name="USI_GM_EE__c"
+                                                variant="label-hidden"
+                                                class="validateMe"
+                                               required>                                            
+                        </lightning-input-field>                
+                    </div>                
+                    <!--3rd row end --> 
+                   <!--hidden fields start -->
+                   <lightning-input-field   field-name="First_Name__c"
+                                            value={record.First_Name__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field> 
+                   <lightning-input-field   field-name="Last_Name__c"
+                                            value={record.Last_Name__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field> 
+                   <lightning-input-field   field-name="Assignment_Status__c"
+                                            value={record.Assignment_Status__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field>                                                   
+                   <lightning-input-field   field-name="USI_RC_Code__c"
+                                            value={record.USI_RC_Code__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field>  
+                   <lightning-input-field   field-name="USI_GM_BA_Name__c"
+                                            value={loggedInContactId}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field> 
+                   <lightning-input-field   field-name="Created_Date__c"
+                                            value={record.Created_Date__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field>  
+                   <lightning-input-field   field-name="USI_Personnel_No__c"
+                                            value={record.USI_Personnel_No__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field> 
+                   <lightning-input-field   field-name="Assignee_Date_of_Hire__c"
+                                            value={record.Assignee_Date_of_Hire__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field> 
+                   <lightning-input-field   field-name="Business_Area__c"
+                                            value={record.Business_Area__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field> 
+                   <lightning-input-field   field-name="Business_Line__c"
+                                            value={record.Business_Line__c}
+                                            class="slds-hide"
+                                            >
+                    </lightning-input-field>                                                                                                    
+                   <!--hidden fields end -->
+                   
+    
+                    <div class="slds-col slds-size_1-of-1 slds-p-vertical_medium slds-text-align_right">
+                        <lightning-button label="Cancel" class="slds-m-right_x-small next" onclick={handleReset} variant="Neutral">
+                        </lightning-button>
+                        <lightning-button label="Submit" class="slds-m-right_x-small next" onclick={handleSubmit} disabled={isSubmittedDisabled} variant="Neutral">
+                        </lightning-button>
+                    </div>
+                </div>
+            </lightning-record-edit-form>
+        </div>
+    
+        <c-gmce-loader if:true={isLoading}></c-gmce-loader>
+    </template>
+
+
+    <template if:true={isThankYouPage}>
+        <div class="BA_Initiation">
+            <div class="slds-m-bottom_small">
+                <div class="form_header">
+                    <h3 class="slds-text-align_center">Your form has been submitted and the Global Assignment Record has been created.<br/>Click "Next" button to open record.</h3>
+                    <div class="slds-float--right slds-p-around_small">
+                        <lightning-button   class="slds-align_absolute-right"
+                                            label="Next"
+                                            variant="Neutral"
+                                            onclick={navigateToRecordPage}>
+                        </lightning-button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </template>    
+
+</template>

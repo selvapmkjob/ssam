@@ -1,0 +1,229 @@
+<template>
+   
+        <div class="logo slds-m-bottom_small">
+            <div> <img src={deloitteBrandLogo} width="180px" height="50px">
+            </div>
+        </div>  
+        <template if:false={areThankTabVisible}>
+        <div class="Repatriation_Confirmation">
+            <div class="slds-m-bottom_small">
+                <div class="form_header">
+                    <h3 class="slds-text-align_center">Confirm Repatriation / Extension</h3>
+                </div>
+            </div>
+            
+    
+        </div>  
+        
+        <div class="slds-container_large slds-p-top_medium">   
+    <lightning-record-edit-form
+    record-id={recordId}
+    object-api-name="USIOB_Global_Assignments__c"
+    layout-type="Compact"
+    onload={formLoaded}
+    onerror={handleError}
+    onsuccess={handleSuccess}
+    >
+    
+    <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium">
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+            <label class="slds-form-element__label">
+               
+                                    Assignee Name
+            </label>                    
+            <lightning-input-field  field-name="Assignee_Full_Name__c"
+                                    variant="label-hidden"
+                                    disabled={disableForm}>
+                                    
+            </lightning-input-field>
+        </div>
+    
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+            <label class="slds-form-element__label">
+                Job Title
+                        </label>                    
+            <lightning-input-field  field-name="Job_Title__c"
+                                    variant="label-hidden"
+                                    disabled={disableForm}
+                                    onchange={handleEstimatedEndDate}>
+            </lightning-input-field>
+        </div> <!--Second Row-->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+           <label class="slds-form-element__label">
+             
+                                   Host Country           </label>                    
+           <lightning-input-field  field-name="MF_Country__c"
+                                   variant="label-hidden"
+                                   disabled={disableForm}>
+                                   
+           </lightning-input-field>
+       </div>
+   
+       <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+           <label class="slds-form-element__label">
+               Business
+           </label>                    
+           <lightning-input-field  field-name="Business__c"
+                                   variant="label-hidden"
+                                   disabled={disableForm}
+                                  >
+           </lightning-input-field>
+       </div> <!--third Row-->
+       <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+          <label class="slds-form-element__label">
+              
+                                  Assignment Start Date           </label>                    
+          <lightning-input-field  field-name="Assignment_Start_Date__c"
+                                  variant="label-hidden"
+                                  disabled={disableForm}>
+                                  
+          </lightning-input-field>
+      </div>
+  
+      <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+          <label class="slds-form-element__label">
+             <!--   <abbr title="required" class="slds-required">*</abbr>  -->
+              Assignment End Date
+          </label>                    
+          <lightning-input-field  field-name="Assignment_End_Date__c"
+                                  variant="label-hidden" class="AssignmentEndDatec"
+                                  disabled={disableForm}
+                                 >
+          </lightning-input-field>
+      </div>      
+     <div class="slds-hide">
+        <lightning-input-field  field-name="Repatriation_Confirmed_Date__c" class="RepatriationConfirmedDate"                                                                         
+                                              variant="label-hidden">
+        </lightning-input-field>
+      </div>     
+
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+        <label class="slds-form-element__label">
+            <abbr title="required" class="slds-required">*</abbr> 
+            Assignee will repatriate on the Assignment End Date 
+        </label>                    
+      
+        <lightning-input-field  field-name="Assignee_Repatriation_On_End_Date__c"
+                                  variant="label-hidden"
+                                  class="AssigneeRepatriationOnEndDate validateMe"
+                                 
+                                  onchange={changeHandler}
+                                  
+                                 >
+          </lightning-input-field>
+    </div>
+
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 ShowRequestedEndDatelabel slds-hide">
+        <label class="slds-form-element__label">
+            <abbr title="required" class="slds-required">*</abbr>
+            Please Enter the Revised Assignment End Date            
+                    </label>                    
+         <lightning-input-field  field-name="Requested_End_Date__c"
+                                  variant="label-hidden"
+                                  class="RequestedEndDate validateMe"
+                                  onchange={RequestedEndDateChange}
+                                  required={requiredRequestedEndDate}
+                                 >
+          </lightning-input-field>
+    </div>
+     
+   <!--  </template>--> 
+         <div class="slds-col slds-size_1-of-1">
+              <div class="slds-float_left slds-p-top_medium">
+                  
+               </div>
+              <div class="slds-float_right slds-p-top_medium">
+                <lightning-button   label="Cancel" 
+                name="cancel" 
+             class="slds-var-m-left_x-small next"
+             variant="Neutral" 
+            onclick={handleReset}>
+      </lightning-button>
+       
+                   
+               <lightning-button type="submit" label="Submit" name="submit" variant="brand" disabled={Buttonstatus}
+                class="slds-var-m-left_x-small next" onclick={handleWebformDetails}>
+               </lightning-button>
+              </div>
+              </div>
+                </div>  
+               </lightning-record-edit-form>
+            </div>
+<template if:true={bShowModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+       <div class="slds-modal__container">
+          <!-- modal header start -->
+          <header class="slds-modal__header">
+             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                <lightning-icon icon-name="utility:close"
+                   alternative-text="close"
+                   variant="inverse"
+                   size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+             </button>
+             <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">  
+                           {popMessage}
+            </h2>
+          </header>
+          <!-- modal body start -->
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div class="slds-col slds-size_1-of-1">
+                <div class="slds-float_left slds-p-top_medium">
+                     
+                 </div>
+                <div class="slds-float_right slds-p-top_medium">
+               
+                    <lightning-button   label="Cancel" 
+                    name="cancel" 
+                 class="slds-var-m-left_x-small next"
+                 variant="Neutral" 
+                onclick={cancelModal}>
+          </lightning-button>
+                     
+                 <lightning-button type="submit" label="Submit" name="submit" variant="brand" 
+                  class="slds-var-m-left_x-small next" onclick={PopupSubmit}>
+                 </lightning-button>
+                </div>
+                </div>
+                  </div> 
+          </div>
+          
+       </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+ </template>
+    <!--loadingSpinner-->
+    <template if:true={showLoader}>
+    <div class="loadingSpinner slds-spinner_container showLoader">
+        <div class="slds-p-vertical--xx-large">
+            <div class="slds-spinner indicator forceInlineSpinner" aria-hidden="false" role="alert">
+                <div class="forceDotsSpinner">
+                    <div class="slds-spinner_medium slds-spinner slds-spinner_brand" role="status">
+                        <span class="slds-assistive-text">Loading...</span>       
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>                 
+                    </div>
+                </div>
+                <!--render facet: 34:0-->
+            </div>
+        </div>
+     </div>
+    </template>  
+</template>
+    <template if:true={areThankTabVisible}>
+        <div class="BA_Initiation">
+            <div class="slds-m-bottom_small">
+                <div class="form_header">
+                    <h3 class="slds-text-align_center">            Assignment End Date is confirmed successfully. USI Global Mobility Team will prepare Repatriation process.       
+</h3>
+                    <div class="slds-float--right slds-p-around_small">
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </template>  
+</template>

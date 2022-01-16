@@ -1,0 +1,42 @@
+<template>
+    <div class="logo slds-m-bottom_small">
+        <div> <img src={deloitteBrandLogo} width="180px" height="50px">
+        </div>
+    </div>
+    
+    <div class={currentForm}>
+            <div>
+                <div class="slds-m-bottom_small">
+                    <div class="form_header">
+                        <h3 class="slds-text-align_center">{currentFormTitle}</h3>
+                    </div>
+                </div>
+                <template if:true={isBAInitiation}>
+                    <div class="baInitiationForm slds-p-bottom_x-small ">
+                        <strong>Instructions:</strong>
+                        <ul class="slds-list_dotted">
+                            <li>After entering Assignee's name, information will auto-populate. </li>
+                            <li>Complete remaining form fields and submit. </li>
+                            <li>Firm to firm Matrix will be available once the initiation form is submitted.</li>
+                        </ul>
+                        <strong>Note:</strong>
+                        &nbsp; Save and Return Later is not available on this form.
+                    </div>
+                </template>
+    
+    
+    
+            </div>
+    
+            <template if:true={isProgressBarRequired}>
+                <lightning-progress-indicator current-step={currentStage} type="path" variant="base">
+                    <template for:each={stages} for:item="step">
+                        <lightning-progress-step label={step} value={step} key={step}></lightning-progress-step>
+                    </template>
+                </lightning-progress-indicator>
+            </template>    
+    </div>
+   
+
+
+</template>

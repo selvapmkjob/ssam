@@ -1,0 +1,337 @@
+<template>
+    <div class="slds-container_large slds-p-top_medium">
+
+        <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_medium slds-grid_vertical-align-top">
+            <div class="slds-col  slds-size_1-of-1">
+                <h3 class="slds-m-bottom_small slds-text-align_center">Assignee Personal Details</h3>
+
+            </div>
+            <!--Assignee personal Details-->
+                <!-- 1st row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">First Name</label>
+                    <lightning-input data-field="First_Name__c" variant="label-hidden" value={$record.First_Name__c} disabled>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Last Name</label>
+                    <lightning-input data-field="Last_Name__c" variant="label-hidden"
+                        value={$record.Last_Name__c} disabled>
+                    </lightning-input>
+                </div>
+                <!-- 1st row end -->
+
+                <!-- 2nd row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">USI Personnel ID</label>
+                    <lightning-input data-field="USI_Personnel_No__c" variant="label-hidden"
+                        value={$record.USI_Personnel_No__c} disabled>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Deloitte Email Address</label>
+                    <lightning-input data-field="Deloitte_Email_Address__c" variant="label-hidden" type="email"
+                        value={$record.Deloitte_Email_Address__c} disabled>
+                    </lightning-input>
+                </div>
+                <!-- 2nd row end -->
+
+                <!-- 3rd row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Job Title</label>
+                    <lightning-input data-field="Job_Title__c" variant="label-hidden"
+                        value={$record.Job_Title__c} disabled>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Business</label>
+                    <lightning-input data-field="Business__c" variant="label-hidden"
+                        value={$record.Business__c} disabled>
+                    </lightning-input>
+                </div>
+                <!-- 3rd row end -->
+
+                <!-- 4th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Business Area</label>
+                    <lightning-input data-field="Business_Area__c" variant="label-hidden"
+                        value={$record.Business_Area__c} disabled>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Business Line</label>
+                    <lightning-input data-field="Business_Line__c" variant="label-hidden"
+                        value={$record.Business_Line__c} disabled>
+                    </lightning-input>
+                </div>
+                <!-- 4th row end -->
+
+                <!-- 5th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">USI Entity Name</label>
+                    <lightning-input data-field="USI_Entity_Name__c" variant="label-hidden"
+                        value={$record.USI_Entity_Name__c} disabled>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Date of Hire</label>
+                    <lightning-input data-field="Assignee_Date_of_Hire__c" variant="label-hidden" 
+                        value={$record.Assignee_Date_of_Hire__c} disabled>
+                    </lightning-input>
+                </div>
+                <!-- 5th row end -->
+
+            <!--Assignment Detail-->
+                <!-- 1st row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label"><abbr title="required" class="slds-required">*</abbr>Estimated Start Date</label>
+                    <lightning-input    data-field="Estimated_Start_Date__c" 
+                                        variant="label-hidden"
+                                        type="date"
+                                        value={$record.Estimated_Start_Date__c} 
+                                        required>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label"><abbr title="required" class="slds-required">*</abbr>Estimated End Date</label>
+                    <lightning-input data-field="Estimated_End_Date__c" variant="label-hidden" type="date"
+                        value={$record.Estimated_End_Date__c} required>
+                    </lightning-input>
+                </div>                
+                <!-- 1st row end -->
+
+                <!-- 2nd row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label"><abbr title="required" class="slds-required">*</abbr>Assignment Type</label>
+                    <lightning-combobox data-field="Assignment_Type__c" variant="label-hidden" options={Assignment_Type__c_Opts}
+                        value={$record.Assignment_Type__c} required>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host Job Title</label>
+                    <lightning-input data-field="MF_Job_Title__c" variant="label-hidden" type="date"
+                        value={$record.MF_Job_Title__c} >
+                    </lightning-input>
+                </div>                
+                <!-- 2nd row end -->
+
+                <!-- 3rd row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host Office</label>
+                    <lightning-input data-field="MF_Office_Location__c" variant="label-hidden"
+                        value={$record.MF_Office_Location__c} >
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host State</label>
+                    <lightning-input data-field="USI_State__c" variant="label-hidden" type="date"
+                        value={$record.USI_State__c} >
+                    </lightning-input>
+                </div>                
+                <!-- 3rd row end -->
+
+                <!-- 4th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host City</label>
+                    <lightning-input data-field="City_State__c" variant="label-hidden"
+                        value={$record.City_State__c} >
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host Region</label>
+                    <lightning-input data-field="MF_Region__c" variant="label-hidden" type="date"
+                        value={$record.MF_Region__c} >
+                    </lightning-input>
+                </div>                
+                <!-- 4th row end -->
+
+                <!-- 5th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Intended Country of Travel</label>
+                    <lightning-combobox data-field="MF_Country__c" variant="label-hidden" options={MF_Country__c_Opts}
+                        value={$record.MF_Country__c} >
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host Entity Name</label>
+                    <lightning-input data-field="MF_Entity_Name__c" variant="label-hidden"
+                        value={$record.MF_Entity_Name__c} >
+                    </lightning-input>
+                </div>                
+                <!-- 5th row end -->
+
+                <!-- 6th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host Approving PPMD</label>
+                    <lightning-input data-field="MF_Approving_PPMD__c" variant="label-hidden"
+                        value={$record.MF_Approving_PPMD__c}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host Approving PPMD Email</label>
+                    <lightning-input data-field="MF_Approving_PPMD__c" variant="label-hidden" type="email"
+                        value={$record.MF_Approving_PPMD__c}>
+                    </lightning-input>
+                </div>                
+                <!-- 6th row end -->
+
+                <!-- 7th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host GM EE</label>
+                    <lightning-input data-field="MF_GM_EE__c" variant="label-hidden"
+                        value={$record.MF_GM_EE__c}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Host GM EE Email</label>
+                    <lightning-input data-field="MF_GM_EE__c" variant="label-hidden" 
+                        value={$record.MF_GM_EE__c}>
+                    </lightning-input>
+                </div>                
+                <!-- 7th row end -->
+                
+                <!-- 8th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">USI Approving Leader</label>
+                    <template if:true={$record.USI_Approving_PPMD__c}>
+                        <c-usg-custom-lookup
+                        obj-name="Contact"
+                        icon-name="standard:contact"
+                        label-name="Contact"
+                        placeholder="Search" 
+                        fields={fields}
+                        display-fields={displayFields}
+                        onlookup={handleLookup} 
+                        value-id={$record.USI_Approving_PPMD__c}
+                        value-name={$record.USI_Approving_PPMD_Name}
+                        >
+                    </c-usg-custom-lookup>
+                    </template>
+                    
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">USI Talent Business Advisor</label>
+                    <template if:true={$record.USI_Talent_Business_Advisor__c}>
+                        <c-usg-custom-lookup
+                        obj-name="Contact"
+                        icon-name="standard:contact"
+                        label-name="Contact"
+                        placeholder="Search" 
+                        fields={fields}
+                        display-fields={displayFields}
+                        onlookup={handleLookup} 
+                        value-id={$record.USI_Talent_Business_Advisor__c}
+                        value-name={$record.USI_Talent_Business_Advisor_Name}
+                        ></c-usg-custom-lookup>
+                    </template>
+                    
+                
+                </div>                
+                <!-- 8th row end -->                
+
+            <!--Assignee Detail-->
+                <!-- 1st row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Country of Citizenship</label>
+                    <lightning-input data-field="Assignee_Country_of_Citizenship__c" variant="label-hidden"
+                        value={$record.Assignee_Country_of_Citizenship__c}>
+                    </lightning-input>
+                </div>            
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Home City, State</label>
+                    <lightning-input data-field="Home_Country_City_State__c" variant="label-hidden"
+                        value={$record.Home_Country_City_State__c}>
+                    </lightning-input>
+                </div>            
+                <!-- 1st row end -->
+
+                <!-- 2nd row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Birth Country</label>
+                    <lightning-input data-field="Assignee_Birth_Country__c" variant="label-hidden"
+                        value={$record.Assignee_Birth_Country__c}>
+                    </lightning-input>
+                </div>      
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Date of Birth
+                    </label>
+                    <lightning-input data-field="Assignee_Date_of_Birth__c" variant="label-hidden" type="date"
+                        value={$record.Assignee_Date_of_Birth__c}>
+                    </lightning-input>
+                </div>                  
+                <!-- 2nd row end -->
+
+                <!-- 3rd row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Gender</label>
+                    <lightning-combobox data-field="Gender__c" variant="label-hidden" options={Gender__c_Opts}
+                        value={$record.Gender__c}>
+                    </lightning-combobox>
+                </div>          
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Marital Status
+                    </label>
+                    <lightning-combobox data-field="Assignee_Marital_Status__c" variant="label-hidden" options={Assignee_Marital_Status__c_Opts}
+                        value={$record.Assignee_Marital_Status__c}>
+                    </lightning-combobox>
+                </div>              
+                <!-- 3rd row end -->
+
+                <!-- 4th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Personal Email Address
+                    </label>
+                    <lightning-input data-field="Personal_Email_Address__c" variant="label-hidden"
+                        value={$record.Personal_Email_Address__c}>
+                    </lightning-input>
+                </div>            
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                    <label class="slds-form-element__label">Contact Number
+                    </label>
+                    <lightning-input data-field="Assignee_Contact_Number__c" variant="label-hidden"
+                        value={$record.Assignee_Contact_Number__c}>
+                    </lightning-input>
+                </div>            
+                <!-- 4th row end -->
+
+                <!-- 5th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-m-top_x-small">
+                    <label class="slds-form-element__label">Assignee Full Address
+                    </label>
+                    
+                </div>     
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_9-of-12 slds-m-top_x-small">
+                   
+                    <lightning-input data-field="Address__c" variant="label-hidden"
+                        value={$record.Address__c}>
+                    </lightning-input>
+                </div>         
+                <!-- 5th row end -->
+
+                <!-- 6th row start -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-m-top_x-small">
+                    <label class="slds-form-element__label">Assignee Comment
+                    </label>
+                  
+                   
+                </div>  
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_9-of-12 slds-m-top_x-small">
+                  
+                    <lightning-input data-field="Assignee_Comment__c" variant="label-hidden"
+                        value={$record.Assignee_Comment__c}>
+                    </lightning-input>
+                </div>            
+                <!-- 6th row end -->
+                <div class="slds-col slds-size_1-of-1 slds-p-vertical_medium slds-text-align_right">
+                    <lightning-button label="Save" class="slds-m-right_x-small next" onclick={handleSaveReturn} variant="Neutral">
+                    </lightning-button>
+                    <lightning-button label="Next" class="slds-m-right_x-small next" onclick={handleSuccess} variant="Neutral">
+                    </lightning-button>
+                </div>
+                <!-- 7th row start -->
+                <!-- 7th row end -->            
+        </div>
+
+
+    </div>
+</template>

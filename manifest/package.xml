@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>USGCustomLookupController</members>
+		<members>USIOB_GlobalAssignment</members>
+		<members>USIOB_GlobalAssignmentTest</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>gmceProgressBar</members>
+		<members>usgCustomLookup</members>
+		<members>usgCustomLookupSelectedRecord</members>
+		<members>usiobAssignmentDetails</members>
+		<members>usiobBaInitForm</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<version>53.0</version>
+</Package>
